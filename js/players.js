@@ -1,69 +1,45 @@
-game.players = {
-
-    player1: {
-        name: "Minos",
-        life: 10,
-        weapon: "Mains nues",
-        posX: 0,
-        posY: 0,
-        css_class: "Minos"
-    },
-
-    player2: {
-        name: "Horos",
-        life: 10,
-        weapon: "Mains nues",
-        posX: 0,
-        posY: 0,
-        css_class: "Horos"
+class player {
+    constructor(name, life, weapon, posX, posY, css_class, boardSize) {
+        this.name = name
+        this.life = life
+        this.weapon = weapon
+        this.posX = posX
+        this.posY = posY
+        this.css_class = css_class
+        this.boardSize = boardSize
     }
-};
 
-game.players.GeneratePlayers = function() {
-    for (let i = 1; i < 3; i++) {
-        let dataY = Math.round(Math.random() * (randomBoardSize - 1) + 1);
-        let dataX = Math.round(Math.random() * (randomBoardSize - 1) + 1);
+    GeneratePlayer() {
+        let dataY = Math.round(Math.random() * (this.boardSize - 1) + 1);
+        let dataX = Math.round(Math.random() * (this.boardSize - 1) + 1);
         let targetSquare = document.querySelector(`.square[data-y='${dataY}'][data-x='${dataX}']`);
-        if (targetSquare.getAttribute("available") == "true") {
-            targetSquare.setAttribute("player", game.players['player' + i].name);
+        if (targetSquare.getAttribute("available") == "true" && targetSquare.getAttribute("adjacent") == "false") {
+            targetSquare.setAttribute("player", this.name);
             targetSquare.setAttribute("available", "false");
-            targetSquare.classList.add(game.players['player' + i].css_class)
-            game.players['player' + i].posX = dataX;
-            game.players['player' + i].posY = dataY;
-            game.players.VerifyAdjacent();
+            targetSquare.classList.add(this.css_class);
+            this.posY = dataY;
+            this.posX = dataX;
         } else {
-            i--
+            return this.GeneratePlayer()
         }
     }
-};
 
-game.players.getAdjacent = function() {
-    posU = [game.players.player1.posY - 1, game.players.player1.posX];
-    posD = [game.players.player1.posY + 1, game.players.player1.posX];
-    posL = [game.players.player1.posY, game.players.player1.posX - 1];
-    posR = [game.players.player1.posY, game.players.player1.posX + 1];
-    posP2 = [game.players.player2.posY, game.players.player2.posX];
-
-    if (JSON.stringify(posU) == JSON.stringify(posP2) ||
-        JSON.stringify(posD) == JSON.stringify(posP2) ||
-        JSON.stringify(posL) == JSON.stringify(posP2) ||
-        JSON.stringify(posR) == JSON.stringify(posP2)) {
-        return true
-    } else {
-        return false
-    }
-};
-
-game.players.VerifyAdjacent = function() {
-    if (game.players.getAdjacent() == true) {
-        let player1 = document.querySelector(`.square[data-y='${game.players.player1.posY}'][data-x='${game.players.player1.posX}']`)
-        let player2 = document.querySelector(`.square[data-y='${game.players.player2.posY}'][data-x='${game.players.player2.posX}']`)
-        player1.removeAttribute("player");
-        player1.setAttribute("available", "true");
-        player1.classList.remove("Minos");
-        player2.removeAttribute("player");
-        player2.setAttribute("available", "true");
-        player2.classList.remove("Horos");
-        game.players.GeneratePlayers();
-    }
-};
+    SetAdjacent() {
+        let adjUp = document.querySelector(`.square[data-y='${this.posY - 1}'][data-x='${this.posX}']`)
+        let adjDown = document.querySelector(`.square[data-y='${this.posY + 1}'][data-x='${this.posX}']`);
+        let adjLeft = document.querySelector(`.square[data-y='${this.posY}'][data-x='${this.posX - 1}']`);
+        let adjRight = document.querySelector(`.square[data-y='${this.posY}'][data-x='${this.posX + 1}']`);
+        if (adjUp !== null) {
+            adjUp.setAttribute("adjacent", "true")
+        }
+        if (adjDown !== null) {
+            adjDown.setAttribute("adjacent", "true")
+        }
+        if (adjLeft !== null) {
+            adjLeft.setAttribute("adjacent", "true")
+        }
+        if (adjRight !== null) {
+            adjRight.setAttribute("adjacent", "true")
+        }
+    };
+}
