@@ -146,6 +146,13 @@ body {
     background-size: cover;
 }
 
+.Hands {
+    background-image: url(images/fist.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover
+}
+
 .Knife {
     background-image: url(images/knife.png);
     background-repeat: no-repeat;
