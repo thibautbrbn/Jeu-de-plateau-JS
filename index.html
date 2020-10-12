@@ -10,8 +10,47 @@
 
 <body>
     <div>
-        <div>
+        <div id="title">
+            <h1>Combat dans l'espace</h1>
+            <h2>🔥 Celui qui combat peut perdre, mais celui qui ne combat pas a déjà perdu 🔥</h2>
+        </div>
+        <div id="game">
+            <div id="game_players">
+                <div id="player_1">
+                    <div class="player_pic-div">
+                        <img src="images/minos.png" class="player_pic" alt="player1">
+                    </div>
+                    <div class="player_infos">
+                        <h2>Joueur 1 : Minos</h2>
+                        <p>Points de vie : 100</p>
+                        <p>Arme : Mains nues</p>
+                        <p>Dégats : 10 points</p>
+                    </div>
+                </div>
+
+                <div id="player_2">
+                    <div class="player_pic-div">
+                        <img src="images/horos.png" class="player_pic" alt="player2">
+                    </div>
+                    <div class="player_infos">
+                        <h2>Joueur 2 : Horos</h2>
+                        <p>Points de vie : 100</p>
+                        <p>Arme : Mains nues</p>
+                        <p>Dégats : 10 points</p>
+                    </div>
+                </div>
+            </div>
             <div id="board"></div>
+            <div id="game_informations">
+                <div id="rules">
+                    <h2>Règles du jeu</h2>
+                    <p>Lancez une nouvelle partie et partez au combat !
+                        <br> La carte du jeu est généré, et sa taille est aléatoire. Les joueurs, comme les armes (entre 1 et 4) sont disposés au hasard sur la carte.
+                        <br> Lorsque c'est a vous de jouer, déplacez vous sur les cases clignonantes. Si dans vos déplacement, vous passez sur une arme, vous récuperez l'arme en question et laissez votre arme sur place.
+                        <br> Quand vous croiserez votre adversaire, le combat à mort démarrera. À vous de jouer !
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 

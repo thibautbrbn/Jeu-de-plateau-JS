@@ -1,13 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@font-face {
+    font-family: 'AstronBoy-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('AstronBoy-Regular'), url('fonts/astron boy.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'AstronBoy-Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('AstronBoy-Italic'), url('fonts/astron boy italic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'AstronBoyVideo-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('AstronBoyVideo-Regular'), url('fonts/astron boy video.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'AstronBoyWonder-Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('AstronBoyWonder-Regular'), url('fonts/astron boy wonder.woff') format('woff');
+}
+
+h1 {
+    font-family: 'AstronBoyVideo-Regular', cursive;
+    font-size: 6em;
+    background: linear-gradient(rgb(246, 191, 9), rgb(207, 60, 60));
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0;
+}
+
+#title h2 {
+    font-family: 'AstronBoy-Italic', cursive;
+    font-size: 2.5em;
+    background: linear-gradient(rgb(255, 161, 85), rgb(216, 2, 2));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+#rules h2,
+#player_1 h2,
+#player_2 h2 {
+    font-family: 'AstronBoy-Italic', cursive;
+    font-size: 2.2em;
+    background: linear-gradient(rgb(223, 76, 18), rgb(212, 149, 77));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+p {
+    font-family: 'Audiowide', cursive;
+    color: rgb(218, 153, 69);
+    font-size: 1.5em;
+}
+
+body {
+    height: 100%;
+    background-image: url(images/wallpaper.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#game {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#game_players {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 25%;
+}
+
+#player_1 {
+    background-color: rgba(77, 131, 212, 0.50);
+    border-radius: 3px 35px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#player_2 {
+    background-color: rgb(204, 50, 50, 0.50);
+    border-radius: 35px 3px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.player_pic-div,
+.player_infos {
+    align-self: center;
+}
+
+.player_pic {
+    width: 100px;
+    align-self: center;
+}
+
+#game_informations {
+    width: 25%;
+}
+
+#board {
+    background-image: url(images/blacksky.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 5px solid rgba(179, 40, 63, 0.5);
+    border-radius: 5px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
 .square {
-    background-color: white;
-    border: 1px solid grey;
-    width: 50px;
-    height: 50px;
-    float: left;
+    background-color: rgba(114, 16, 65, 0.671);
+    border: 1px solid rgba(114, 35, 101, 0.548);
+    width: 100%;
 }
 
 .blocked {
-    background-color: grey;
+    background-image: url(images/asteroid.png);
+    background-size: cover;
 }
 
 .Knife {
@@ -59,12 +195,12 @@
         opacity: 1.0;
     }
     to {
-        opacity: 0.3;
+        opacity: 0.7;
     }
 }
 
 .MinosMovement {
-    background-color: rgba(77, 131, 212, 0.4);
+    background-color: rgba(77, 131, 212, 0.7);
     -webkit-animation-name: blinker;
     -webkit-animation-duration: 0.6s;
     -webkit-animation-iteration-count: infinite;
@@ -73,7 +209,7 @@
 }
 
 .HorosMovement {
-    background-color: rgb(204, 50, 50, 0.4);
+    background-color: rgb(204, 50, 50, 0.7);
     -webkit-animation-name: blinker;
     -webkit-animation-duration: 0.6s;
     -webkit-animation-iteration-count: infinite;
@@ -82,11 +218,11 @@
 }
 
 .MinosMovement:hover {
-    background-color: rgba(77, 131, 212, 0.7);
+    background-color: rgba(77, 131, 212, 0.4);
     cursor: pointer;
 }
 
 .HorosMovement:hover {
-    background-color: rgb(204, 50, 50, 0.7);
+    background-color: rgb(204, 50, 50, 0.4);
     cursor: pointer;
 }

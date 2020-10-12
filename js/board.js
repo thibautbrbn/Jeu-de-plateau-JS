@@ -10,7 +10,7 @@ class board {
             board.appendChild(row);
             row.setAttribute("class", "row")
             for (let j = 0; j < this.boardSize; j++) {
-                let cell = document.createElement("div");
+                let cell = document.createElement("td");
                 cell.setAttribute("class", "square");
                 cell.setAttribute("data-y", i + 1);
                 cell.setAttribute("data-x", j + 1);
