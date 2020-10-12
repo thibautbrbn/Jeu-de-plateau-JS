@@ -33,7 +33,7 @@ GenerateWeapons = function() {
         let dataX = Math.round(Math.random() * (newBoard.boardSize - 1) + 1);
         let targetSquare = document.querySelector(`.square[data-y='${dataY}'][data-x='${dataX}']`);
         if (targetSquare.getAttribute("available") == "true") {
-            targetSquare.setAttribute("weapon", "Weapon" + (i + 1));
+            targetSquare.setAttribute("weapon", Weapons["weapon" + (i + 1)]["name"]);
             targetSquare.classList.add(Weapons["weapon" + (i + 1)]["css_class"])
         } else {
             i--

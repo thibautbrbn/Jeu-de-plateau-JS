@@ -1,5 +1,6 @@
 class player {
-    constructor(name, life, weapon, posX, posY, css_class, boardSize) {
+    constructor(player_number, name, life, weapon, posX, posY, css_class, boardSize) {
+        this.player_number = player_number
         this.name = name
         this.life = life
         this.weapon = weapon
@@ -42,4 +43,15 @@ class player {
             adjRight.setAttribute("adjacent", "true")
         }
     };
+
+    PlayerInfos() {
+        let name = document.getElementById(this.player_number + "_name")
+        let life = document.getElementById(this.player_number + "_life")
+        let weapon = document.getElementById(this.player_number + "_weapon")
+        let damages = document.getElementById(this.player_number + "_damages")
+        name.textContent = this.name;
+        life.textContent = this.life;
+        weapon.textContent = this.weapon.name;
+        damages.textContent = this.weapon.damage;
+    }
 }
