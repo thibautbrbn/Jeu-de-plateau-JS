@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeu de plateau tour à tour</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" media="screen and (max-width: 1450px)" href="mid-res.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="small-res.css" />
 </head>
 
 <body>
-    <div>
+    <div id="display">
         <img src="images/enable_audio.png" alt="audio icon" id="audioOn">
         <img src="images/disable_audio.png" alt="audio icon" id="audioOff">
 
@@ -25,12 +27,13 @@
         <div id="game">
             <div id="game_players">
                 <button id="NewGame" onclick="NewGame()">Nouvelle partie</button>
-                <div id="player_1">
-                    <div class="player_pic-div">
-                        <img src="images/minos.png" class="player_pic" alt="player1">
-                    </div>
-                    <div class="player_infos">
-                        <h2><span id="player1_name"></h2>
+                <div id="playersblock">
+                    <div id="player_1">
+                        <div class="player_pic-div">
+                            <img src="images/minos.png" class="player_pic" alt="player1">
+                        </div>
+                        <div class="player_infos">
+                            <h2><span id="player1_name"></h2>
                         <p>Points de vie : <span id="player1_life"></p>
                         <p>Arme : <span id="player1_weapon"></p>
                         <p>Dégats : <span id="player1_damages"></p>
@@ -49,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div id="board"></div>
             <div id="game_informations">
                 <div id="rules">
@@ -61,8 +65,10 @@
                         déplacement,
                         vous passez sur une arme, vous récuperez l'arme en question et laissez votre arme sur place.
                         <br> Quand vous croiserez votre adversaire, le combat à mort démarrera.
-                        <br> Lors du combat, si vous choisissez d'attaquer, vous infligez à votre adversaire les dégats dont dispose votre arme. 
-                        <br> Si vous choississez de défendre, les dégats de l'attaque de votre adversaire sont ensuite divisés par deux. À vous de jouer !
+                        <br> Lors du combat, si vous choisissez d'attaquer, vous infligez à votre adversaire les dégats
+                        dont dispose votre arme.
+                        <br> Si vous choississez de défendre, les dégats de l'attaque de votre adversaire sont ensuite
+                        divisés par deux. À vous de jouer !
                     </p>
                 </div>
                 <div id="fight">
@@ -75,8 +81,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 
     <script src="js/board.js"></script>

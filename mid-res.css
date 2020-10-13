@@ -1,0 +1,59 @@
+body {
+    background-position: center;
+}
+
+#title {
+    text-align: center;
+}
+
+#game {
+    flex-direction: column;
+}
+
+#game_players {
+    width: 100%;
+}
+
+#NewGame {
+    width: 50%;
+    align-self: center;
+}
+
+#playersblock {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#player_1,
+#player_2 {
+    min-width: 350px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#board {
+    width: 750px;
+    height: 750px;
+}
+
+#game_informations {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+#fight {
+    text-align: center;
+    align-self: center;
+}
+
+#rules {
+    text-align: center;
+    align-self: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}

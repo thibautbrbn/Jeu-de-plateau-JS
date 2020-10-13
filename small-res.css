@@ -1,0 +1,50 @@
+body {
+    width: 100%;
+}
+
+#audioOn,
+#fullscreenOn {
+    display: none;
+}
+
+#title {
+    text-align: center;
+}
+
+h1 {
+    font-size: 4.5em;
+    padding-top: 20px;
+}
+
+#title h2 {
+    font-size: 2em;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#playersblock {
+    flex-direction: column;
+    align-self: center;
+}
+
+#player_1,
+#player_2 {
+    min-width: 350px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#board {
+    width: 350px;
+    height: 350px;
+}
+
+#AttackorDefend {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#rules {
+    padding-left: 5px;
+    padding-right: 5px;
+}
