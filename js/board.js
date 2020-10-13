@@ -15,7 +15,6 @@ class board {
                 cell.setAttribute("data-y", i + 1);
                 cell.setAttribute("data-x", j + 1);
                 cell.setAttribute("available", "true");
-                cell.setAttribute("adjacent", "false")
                 row.appendChild(cell);
             }
         }

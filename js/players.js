@@ -1,5 +1,5 @@
 class player {
-    constructor(player_number, name, life, weapon, posX, posY, css_class, boardSize) {
+    constructor(player_number, name, life, weapon, posX, posY, css_class, boardSize, fight) {
         this.player_number = player_number
         this.name = name
         this.life = life
@@ -8,13 +8,14 @@ class player {
         this.posY = posY
         this.css_class = css_class
         this.boardSize = boardSize
+        this.fight = fight
     }
 
     GeneratePlayer() {
         let dataY = Math.round(Math.random() * (this.boardSize - 1) + 1);
         let dataX = Math.round(Math.random() * (this.boardSize - 1) + 1);
         let targetSquare = document.querySelector(`.square[data-y='${dataY}'][data-x='${dataX}']`);
-        if (targetSquare.getAttribute("available") == "true" && targetSquare.getAttribute("adjacent") == "false") {
+        if (targetSquare.getAttribute("available") == "true" && !targetSquare.hasAttribute("adjacent")) {
             targetSquare.setAttribute("player", this.name);
             targetSquare.setAttribute("available", "false");
             targetSquare.classList.add(this.css_class);
@@ -31,16 +32,16 @@ class player {
         let adjLeft = document.querySelector(`.square[data-y='${this.posY}'][data-x='${this.posX - 1}']`);
         let adjRight = document.querySelector(`.square[data-y='${this.posY}'][data-x='${this.posX + 1}']`);
         if (adjUp !== null) {
-            adjUp.setAttribute("adjacent", "true")
+            adjUp.setAttribute("adjacent", true + this.name)
         }
         if (adjDown !== null) {
-            adjDown.setAttribute("adjacent", "true")
+            adjDown.setAttribute("adjacent", true + this.name)
         }
         if (adjLeft !== null) {
-            adjLeft.setAttribute("adjacent", "true")
+            adjLeft.setAttribute("adjacent", true + this.name)
         }
         if (adjRight !== null) {
-            adjRight.setAttribute("adjacent", "true")
+            adjRight.setAttribute("adjacent", true + this.name)
         }
     };
 

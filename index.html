@@ -16,6 +16,7 @@
         </div>
         <div id="game">
             <div id="game_players">
+                <button id="NewGame" onclick="NewGame()">Nouvelle partie</button>
                 <div id="player_1">
                     <div class="player_pic-div">
                         <img src="images/minos.png" class="player_pic" alt="player1">
@@ -45,13 +46,29 @@
                 <div id="rules">
                     <h2>Règles du jeu</h2>
                     <p>Lancez une nouvelle partie et partez au combat !
-                        <br> La carte du jeu est généré, et sa taille est aléatoire. Les joueurs, comme les armes (entre 1 et 4) sont disposés au hasard sur la carte.
-                        <br> Lorsque c'est a vous de jouer, déplacez vous sur les cases clignonantes. Si dans vos déplacement, vous passez sur une arme, vous récuperez l'arme en question et laissez votre arme sur place.
-                        <br> Quand vous croiserez votre adversaire, le combat à mort démarrera. À vous de jouer !
+                        <br> La carte du jeu est généré, et sa taille est aléatoire. Les joueurs, comme les armes (entre
+                        1 et 4)
+                        sont disposés au hasard sur la carte.
+                        <br> Lorsque c'est a vous de jouer, déplacez vous sur les cases clignonantes. Si dans vos
+                        déplacement,
+                        vous passez sur une arme, vous récuperez l'arme en question et laissez votre arme sur place.
+                        <br> Quand vous croiserez votre adversaire, le combat à mort démarrera.
+                        <br> Lors du combat, si vous choisissez d'attaquer, vous infligez à votre adversaire les dégats dont dispose votre arme. 
+                        <br> Si vous choississez de défendre, les dégats de l'attaque de votre adversaire sont ensuite divisés par deux. À vous de jouer !
                     </p>
+                </div>
+                <div id="fight">
+                    <h2>Mode Combat</h2>
+                    <p>Choisissez d'attaquer ou de défendre !</p>
+                    <div id="AttackorDefend">
+                        <button id="attack">Attaquer</button>
+                        <button id="defend">Défendre</button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <script src="js/board.js"></script>

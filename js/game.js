@@ -1,4 +1,4 @@
-let whoStart = function() {
+const whoStart = function() {
     randomPlayer = Math.floor(Math.random() * 2) + 1;
     if (randomPlayer == "1") {
         player1Movement();
@@ -7,7 +7,7 @@ let whoStart = function() {
     }
 }
 
-let player1Movement = function() {
+const player1Movement = function() {
     const p1Move = new move(player1);
     p1Move.moveUp();
     p1Move.moveDown();
@@ -17,20 +17,25 @@ let player1Movement = function() {
     let targets = document.querySelectorAll('.MinosMovement');
     let firstPosition = document.querySelector(`.square[data-y='${player1.posY}'][data-x='${player1.posX}']`);
 
-
     const targetMove = (el) => {
         firstPosition.classList.remove(player1.name);
         firstPosition.setAttribute("available", "true");
         firstPosition.removeAttribute("Player");
         el.setAttribute("available", "false");
-        el.setAttribute('adjacent', 'false');
         el.setAttribute('player', player1.name);
         el.classList.add(player1.css_class);
         player1.posY = parseInt(el.getAttribute("data-y"));
         player1.posX = parseInt(el.getAttribute("data-x"));
-        dropEvent();
         WeaponChange(el);
-        player2Movement();
+        if (el.getAttribute("adjacent") == "trueHoros") {
+            dropEvent();
+            alert("Le combat commence, bonne chance !")
+            fightPlayer1();
+        } else {
+            dropEvent();
+            player1.SetAdjacent();
+            player2Movement();
+        }
     }
 
     const clickHandler = (e) => {
@@ -43,7 +48,7 @@ let player1Movement = function() {
 
     function dropEvent() {
         targets.forEach((drop) => {
-            drop.setAttribute('adjacent', 'false');
+            drop.removeAttribute('adjacent');
             drop.classList.remove('MinosMovement');
             drop.removeEventListener('click', clickHandler);
         });
@@ -114,7 +119,7 @@ let player1Movement = function() {
     }
 }
 
-let player2Movement = function() {
+const player2Movement = function() {
     const p2Move = new move(player2);
     p2Move.moveUp();
     p2Move.moveDown();
@@ -129,14 +134,20 @@ let player2Movement = function() {
         firstPosition.setAttribute("available", "true");
         firstPosition.removeAttribute("Player");
         el.setAttribute("available", "false");
-        el.setAttribute('adjacent', 'false');
         el.setAttribute('player', player2.name);
         el.classList.add(player2.css_class);
         player2.posY = parseInt(el.getAttribute("data-y"));
         player2.posX = parseInt(el.getAttribute("data-x"));
-        dropEvent();
         WeaponChange(el);
-        player1Movement();
+        if (el.getAttribute("adjacent") == "trueMinos") {
+            dropEvent();
+            alert("Le combat commence, bonne chance !")
+            fightPlayer2();
+        } else {
+            dropEvent();
+            player2.SetAdjacent();
+            player1Movement();
+        }
     }
 
     const clickHandler = (e) => {
@@ -149,7 +160,7 @@ let player2Movement = function() {
 
     function dropEvent() {
         targets.forEach((drop) => {
-            drop.setAttribute('adjacent', 'false');
+            drop.removeAttribute('adjacent');
             drop.classList.remove('HorosMovement');
             drop.removeEventListener('click', clickHandler);
         });
@@ -217,5 +228,101 @@ let player2Movement = function() {
                 }
             }
         }
+    }
+}
+
+const fightPlayer1 = function() {
+    let fightBlock = document.getElementById('AttackorDefend');
+    let attackButton = document.getElementById('attack');
+    let defendButton = document.getElementById('defend');
+    let player1life = document.getElementById("player1_life");
+    let player2life = document.getElementById("player2_life");
+
+    fightBlock.style.backgroundColor = "rgb(77, 131, 212, 0.5)";
+    attackButton.style.backgroundColor = "rgb(77, 131, 212, 0.7)";
+    defendButton.style.backgroundColor = "rgb(77, 131, 212, 0.7)";
+
+    if (player1life.textContent == "0") {
+        if (confirm("Minos n'a pas été à la hauter et a été abattu. Voulez-vous recommencer une nouvelle partie ?")) {
+            NewGame()
+        } else {
+
+        }
+    } else {
+        const LifeReduce = () => {
+            if (player2.fight == "attack") {
+                player2life.textContent -= player1.weapon.damage;
+                if (player2life.textContent < 0) {
+                    player2life.textContent = 0
+                }
+            } else {
+                player2life.textContent -= (player1.weapon.damage / 2);
+                if (player2life.textContent < 0) {
+                    player2life.textContent = 0
+                }
+            }
+            attackButton.removeEventListener("click", LifeReduce);
+            defendButton.removeEventListener("click", DamageReduce);
+            player2.fight = "attack";
+            fightPlayer2();
+        }
+
+        const DamageReduce = () => {
+            player1.fight = "defend"
+            attackButton.removeEventListener("click", LifeReduce)
+            defendButton.removeEventListener("click", DamageReduce)
+            fightPlayer2()
+        }
+
+        attackButton.addEventListener("click", LifeReduce);
+        defendButton.addEventListener("click", DamageReduce);
+    }
+}
+
+const fightPlayer2 = function() {
+    let fightBlock = document.getElementById('AttackorDefend');
+    let attackButton = document.getElementById('attack');
+    let defendButton = document.getElementById('defend');
+    let player1life = document.getElementById("player1_life");
+    let player2life = document.getElementById("player2_life");
+
+    fightBlock.style.backgroundColor = "rgb(204, 50, 50, 0.5)";
+    attackButton.style.backgroundColor = "rgb(204, 50, 50, 0.7)";
+    defendButton.style.backgroundColor = "rgb(204, 50, 50, 0.7)";
+
+    if (player2life.textContent == "0") {
+        if (confirm("Horos n'a pas été à la hauter et a été abattu. Voulez-vous recommencer une nouvelle partie ?")) {
+            NewGame()
+        } else {
+
+        }
+    } else {
+        const LifeReduce = () => {
+            if (player1.fight == "attack") {
+                player1life.textContent -= player2.weapon.damage;
+                if (player1life.textContent < 0) {
+                    player1life.textContent = 0
+                }
+            } else {
+                player1life.textContent -= (player2.weapon.damage / 2)
+                if (player1life.textContent < 0) {
+                    player1life.textContent = 0
+                }
+            }
+            attackButton.removeEventListener("click", LifeReduce);
+            defendButton.removeEventListener("click", DamageReduce);
+            player1.fight = "attack";
+            fightPlayer1();
+        }
+
+        const DamageReduce = () => {
+            player2.fight = "defend"
+            attackButton.removeEventListener("click", LifeReduce)
+            defendButton.removeEventListener("click", DamageReduce)
+            fightPlayer1()
+        }
+
+        attackButton.addEventListener("click", LifeReduce);
+        defendButton.addEventListener("click", DamageReduce);
     }
 }
