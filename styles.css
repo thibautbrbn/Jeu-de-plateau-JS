@@ -70,6 +70,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #audioOn {
@@ -138,6 +140,7 @@ body {
     border-radius: 3px 35px;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 50px;
 }
 
 #player_2 {
@@ -145,6 +148,7 @@ body {
     border-radius: 35px 3px;
     display: flex;
     justify-content: space-around;
+    margin-top: 50px;
 }
 
 .player_pic-div,
