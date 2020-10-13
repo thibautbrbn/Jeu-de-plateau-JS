@@ -243,7 +243,7 @@ const fightPlayer1 = function() {
     defendButton.style.backgroundColor = "rgb(77, 131, 212, 0.7)";
 
     if (player1life.textContent == "0") {
-        if (confirm("Minos n'a pas été à la hauter et a été abattu. Voulez-vous recommencer une nouvelle partie ?")) {
+        if (confirm("Minos n'a pas été à la hauteur et a été abattu. Voulez-vous recommencer une nouvelle partie ?")) {
             NewGame()
         } else {
 
@@ -291,7 +291,7 @@ const fightPlayer2 = function() {
     defendButton.style.backgroundColor = "rgb(204, 50, 50, 0.7)";
 
     if (player2life.textContent == "0") {
-        if (confirm("Horos n'a pas été à la hauter et a été abattu. Voulez-vous recommencer une nouvelle partie ?")) {
+        if (confirm("Horos n'a pas été à la hauteur et a été abattu. Voulez-vous recommencer une nouvelle partie ?")) {
             NewGame()
         } else {
 
