@@ -3,28 +3,28 @@
     font-family: 'AstronBoy-Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('AstronBoy-Regular'), url('fonts/astron boy.woff') format('woff');
+    src: local('AstronBoy-Regular'), url('../fonts/astron boy.woff') format('woff');
 }
 
 @font-face {
     font-family: 'AstronBoy-Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('AstronBoy-Italic'), url('fonts/astron boy italic.woff') format('woff');
+    src: local('AstronBoy-Italic'), url('../fonts/astron boy italic.woff') format('woff');
 }
 
 @font-face {
     font-family: 'AstronBoyVideo-Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('AstronBoyVideo-Regular'), url('fonts/astron boy video.woff') format('woff');
+    src: local('AstronBoyVideo-Regular'), url('../fonts/astron boy video.woff') format('woff');
 }
 
 @font-face {
     font-family: 'AstronBoyWonder-Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('AstronBoyWonder-Regular'), url('fonts/astron boy wonder.woff') format('woff');
+    src: local('AstronBoyWonder-Regular'), url('../fonts/astron boy wonder.woff') format('woff');
 }
 
 h1 {
@@ -64,7 +64,7 @@ p {
 body {
     height: 100%;
     margin: auto;
-    background-image: url(images/wallpaper.gif);
+    background-image: url(../Images/wallpaper.gif);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -206,7 +206,7 @@ button:hover {
 }
 
 #board {
-    background-image: url(images/blacksky.gif);
+    background-image: url(../Images/blacksky.gif);
     background-repeat: no-repeat;
     background-size: cover;
     height: 700px;
@@ -232,47 +232,47 @@ button:hover {
 }
 
 .blocked {
-    background-image: url(images/asteroid.png);
+    background-image: url(../Images/asteroid.png);
     background-size: cover;
 }
 
 .Hands {
-    background-image: url(images/fist.png);
+    background-image: url(../Images/fist.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover
 }
 
 .Knife {
-    background-image: url(images/knife.png);
+    background-image: url(../Images/knife.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover
 }
 
 .Sword {
-    background-image: url(images/sword.png);
+    background-image: url(../Images/sword.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover
 }
 
 .Gun {
-    background-image: url(images/handgun.png);
+    background-image: url(../Images/handgun.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover
 }
 
 .Bazooka {
-    background-image: url(images/bazooka.png);
+    background-image: url(../Images/bazooka.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover
 }
 
 .Horos {
-    background-image: url(images/horos.png);
+    background-image: url(../Images/horos.png);
     background-color: rgb(204, 50, 50);
     background-repeat: no-repeat;
     background-position: center;
@@ -280,7 +280,7 @@ button:hover {
 }
 
 .Minos {
-    background-image: url(images/minos.png);
+    background-image: url(../Images/minos.png);
     background-color: rgb(77, 131, 212);
     background-repeat: no-repeat;
     background-position: center;

@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeu de plateau tour à tour</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" media="screen and (max-width: 1450px)" href="mid-res.css" />
-    <link rel="stylesheet" media="screen and (max-width: 768px)" href="small-res.css" />
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" media="screen and (max-width: 1450px)" href="CSS/mid-res.css" />
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="CSS/small-res.css" />
 </head>
 
 <body>
     <div id="display">
-        <img src="images/enable_audio.png" alt="audio icon" id="audioOn">
-        <img src="images/disable_audio.png" alt="audio icon" id="audioOff">
+        <img src="Images/enable_audio.png" alt="audio icon" id="audioOn">
+        <img src="Images/disable_audio.png" alt="audio icon" id="audioOff">
 
-        <audio src="soundtrack/soundtrack.mp3" id="soundtrack"></audio>
+        <audio src="audio/soundtrack.mp3" id="soundtrack"></audio>
 
-        <img src="images/full-screen-on.png" alt="fullscreen icon" id="fullscreenOn">
-        <img src="images/full-screen-off.png" alt="fullscreen icon" id="fullscreenOff">
+        <img src="Images/full-screen-on.png" alt="fullscreen icon" id="fullscreenOn">
+        <img src="Images/full-screen-off.png" alt="fullscreen icon" id="fullscreenOff">
 
         <div id="title">
             <h1>Combat dans l'espace</h1>
@@ -30,45 +30,39 @@
                 <div id="playersblock">
                     <div id="player_1">
                         <div class="player_pic-div">
-                            <img src="images/minos.png" class="player_pic" alt="player1">
+                            <img src="Images/minos.png" class="player_pic" alt="player1">
                         </div>
                         <div class="player_infos">
-                            <h2><span id="player1_name"></h2>
-                        <p>Points de vie : <span id="player1_life"></p>
-                        <p>Arme : <span id="player1_weapon"></p>
-                        <p>Dégats : <span id="player1_damages"></p>
+                            <h2><span id="player1_name"></span></h2>
+                            <p>Points de vie : <span id="player1_life"></span></p>
+                            <p>Arme : <span id="player1_weapon"></span></p>
+                            <p>Dégats : <span id="player1_damages"></span></p>
+                        </div>
                     </div>
-                </div>
 
-                <div id="player_2">
-                    <div class="player_pic-div">
-                        <img src="images/horos.png" class="player_pic" alt="player2">
-                    </div>
-                    <div class="player_infos">
-                        <h2><span id="player2_name"></h2>
-                        <p>Points de vie : <span id="player2_life"></p>
-                        <p>Arme : <span id="player2_weapon"></p>
-                        <p>Dégats : <span id="player2_damages"></p>
+                    <div id="player_2">
+                        <div class="player_pic-div">
+                            <img src="Images/horos.png" class="player_pic" alt="player2">
+                        </div>
+                        <div class="player_infos">
+                            <h2><span id="player2_name"></span></h2>
+                            <p>Points de vie : <span id="player2_life"></span></p>
+                            <p>Arme : <span id="player2_weapon"></span></p>
+                            <p>Dégats : <span id="player2_damages"></span></p>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
             <div id="board"></div>
             <div id="game_informations">
                 <div id="rules">
                     <h2>Règles du jeu</h2>
                     <p>Lancez une nouvelle partie et partez au combat !
-                        <br> La carte du jeu est généré, et sa taille est aléatoire. Les joueurs, comme les armes (entre
-                        1 et 4)
-                        sont disposés au hasard sur la carte.
-                        <br> Lorsque c'est a vous de jouer, déplacez vous sur les cases clignonantes. Si dans vos
-                        déplacement,
-                        vous passez sur une arme, vous récuperez l'arme en question et laissez votre arme sur place.
+                        <br> La carte du jeu est généré, et sa taille est aléatoire. Les joueurs, comme les armes (entre 1 et 4) sont disposés au hasard sur la carte.
+                        <br> Lorsque c'est a vous de jouer, déplacez vous sur les cases clignonantes. Si dans vos déplacement, vous passez sur une arme, vous récuperez l'arme en question et laissez votre arme sur place.
                         <br> Quand vous croiserez votre adversaire, le combat à mort démarrera.
-                        <br> Lors du combat, si vous choisissez d'attaquer, vous infligez à votre adversaire les dégats
-                        dont dispose votre arme.
-                        <br> Si vous choississez de défendre, les dégats de l'attaque de votre adversaire sont ensuite
-                        divisés par deux. À vous de jouer !
+                        <br> Lors du combat, si vous choisissez d'attaquer, vous infligez à votre adversaire les dégats dont dispose votre arme.
+                        <br> Si vous choississez de défendre, les dégats de l'attaque de votre adversaire sont ensuite divisés par deux. À vous de jouer !
                     </p>
                 </div>
                 <div id="fight">
