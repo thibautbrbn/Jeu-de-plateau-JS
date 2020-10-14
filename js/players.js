@@ -1,3 +1,5 @@
+// Class for the players
+
 class player {
     constructor(player_number, name, life, weapon, posX, posY, css_class, boardSize, fight) {
         this.player_number = player_number
@@ -10,6 +12,8 @@ class player {
         this.boardSize = boardSize
         this.fight = fight
     }
+
+    // Function to set player on the game table
 
     GeneratePlayer() {
         let dataY = Math.round(Math.random() * (this.boardSize - 1) + 1);
@@ -25,6 +29,8 @@ class player {
             return this.GeneratePlayer()
         }
     }
+
+    // Function to set adjacent cells depending on player's position to avoid that the other player is generated on nearby cell
 
     SetAdjacent() {
         let adjUp = document.querySelector(`.square[data-y='${this.posY - 1}'][data-x='${this.posX}']`)
@@ -44,6 +50,8 @@ class player {
             adjRight.setAttribute("adjacent", true + this.name)
         }
     };
+
+    // Function to insert player's information HTML
 
     PlayerInfos() {
         let name = document.getElementById(this.player_number + "_name")

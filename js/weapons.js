@@ -1,3 +1,5 @@
+// create object Weapons to create 5 different types of weapons
+
 let Weapons = {
     weapon0: {
         number: "weapon0",
@@ -30,6 +32,8 @@ let Weapons = {
         css_class: "Bazooka"
     }
 }
+
+// Function to set an random number of weapons on the game table
 
 GenerateWeapons = function() {
     let numberOfWeapon = Math.floor(Math.random() * 4 + 1);

@@ -1,7 +1,11 @@
+// Class for the player movements 
+
 class move {
     constructor(player) {
         this.player = player;
     }
+
+    // Function to find player's movement up
 
     moveUp() {
         for (let i = 0; i < 3; i++) {
@@ -16,6 +20,8 @@ class move {
         }
     }
 
+    // Function to find player's movement down
+
     moveDown() {
         for (let i = 0; i < 3; i++) {
             let move = document.querySelector(`.square[data-y='${this.player.posY + i + 1}'][data-x='${this.player.posX}']`);
@@ -28,6 +34,8 @@ class move {
             }
         }
     }
+
+    // Function to find player's movement on the right
 
     moveRight() {
         for (let i = 0; i < 3; i++) {
@@ -42,6 +50,7 @@ class move {
         }
     }
 
+    // Function to find player's movement on the left
 
     moveLeft() {
         for (let i = 0; i < 3; i++) {

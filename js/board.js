@@ -1,7 +1,10 @@
+// Class for the game table 
 class board {
     constructor(boardSize) {
         this.boardSize = boardSize;
     }
+
+    // Function to create a table 
 
     createBoard() {
         let board = document.getElementById("board");
@@ -19,6 +22,8 @@ class board {
             }
         }
     }
+
+    // Function to set unavailable cells in the table
 
     setBlockedCells() {
         for (let i = 0; i < (this.boardSize * this.boardSize) * 0.15; i++) {

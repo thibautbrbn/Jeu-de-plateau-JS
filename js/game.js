@@ -1,3 +1,5 @@
+// Function to know which player starts the game randomly
+
 const whoStart = function() {
     randomPlayer = Math.floor(Math.random() * 2) + 1;
     if (randomPlayer == "1") {
@@ -7,6 +9,8 @@ const whoStart = function() {
     }
 }
 
+/* ------- Function when it is player1's turn to play ------- */
+// Function to set cells where the player can move on the game table
 const player1Movement = function() {
     const p1Move = new move(player1);
     p1Move.moveUp();
@@ -14,8 +18,10 @@ const player1Movement = function() {
     p1Move.moveLeft();
     p1Move.moveRight();
 
-    let targets = document.querySelectorAll('.MinosMovement');
-    let firstPosition = document.querySelector(`.square[data-y='${player1.posY}'][data-x='${player1.posX}']`);
+    let targets = document.querySelectorAll('.MinosMovement'); // Variable to get cells where player can move
+    let firstPosition = document.querySelector(`.square[data-y='${player1.posY}'][data-x='${player1.posX}']`); // Variable to get where the player is before moving
+
+    // Function and evenlistener to move the player from its firstposition to its target position
 
     const targetMove = (el) => {
         firstPosition.classList.remove(player1.name);
@@ -27,10 +33,10 @@ const player1Movement = function() {
         player1.posY = parseInt(el.getAttribute("data-y"));
         player1.posX = parseInt(el.getAttribute("data-x"));
         WeaponChange(el);
-        if (el.getAttribute("adjacent") == "trueHoros") {
+        if (el.getAttribute("adjacent") == "trueHoros") { // If target cell is an adjacent cell of player2, fight begin
             dropEvent();
             alert("Le combat commence, bonne chance !")
-            fightPlayer1();
+            fightPlayer1(); // Function to start fight
         } else {
             dropEvent();
             player1.SetAdjacent();
@@ -46,6 +52,8 @@ const player1Movement = function() {
         target.addEventListener('click', clickHandler);
     });
 
+    // Function to stop eventlistener after click
+
     function dropEvent() {
         targets.forEach((drop) => {
             drop.removeAttribute('adjacent');
@@ -53,6 +61,8 @@ const player1Movement = function() {
             drop.removeEventListener('click', clickHandler);
         });
     }
+
+    // Function to change weapon if the player finds one in its path
 
     function WeaponChange(el) {
         let posXFirstPosition = parseInt(firstPosition.getAttribute("data-x"));
@@ -119,6 +129,8 @@ const player1Movement = function() {
     }
 }
 
+/* ------- Function when it is player1's turn to play ------- */
+// Function to set cells where the player can move on the game table
 const player2Movement = function() {
     const p2Move = new move(player2);
     p2Move.moveUp();
@@ -126,8 +138,10 @@ const player2Movement = function() {
     p2Move.moveLeft();
     p2Move.moveRight();
 
-    let targets = document.querySelectorAll('.HorosMovement');
-    let firstPosition = document.querySelector(`.square[data-y='${player2.posY}'][data-x='${player2.posX}']`);
+    let targets = document.querySelectorAll('.HorosMovement'); // Variable to get cells where player can move
+    let firstPosition = document.querySelector(`.square[data-y='${player2.posY}'][data-x='${player2.posX}']`); // Variable to get where the player is before moving
+
+    // Function and evenlistener to move the player from its firstposition to its target position
 
     const targetMove = (el) => {
         firstPosition.classList.remove(player2.name);
@@ -139,10 +153,10 @@ const player2Movement = function() {
         player2.posY = parseInt(el.getAttribute("data-y"));
         player2.posX = parseInt(el.getAttribute("data-x"));
         WeaponChange(el);
-        if (el.getAttribute("adjacent") == "trueMinos") {
+        if (el.getAttribute("adjacent") == "trueMinos") { // If target cell is an adjacent cell of player1, fight begin
             dropEvent();
             alert("Le combat commence, bonne chance !")
-            fightPlayer2();
+            fightPlayer2(); // Function to start fight
         } else {
             dropEvent();
             player2.SetAdjacent();
@@ -158,6 +172,8 @@ const player2Movement = function() {
         target.addEventListener('click', clickHandler);
     });
 
+    // Function to stop eventlistener after click
+
     function dropEvent() {
         targets.forEach((drop) => {
             drop.removeAttribute('adjacent');
@@ -165,6 +181,8 @@ const player2Movement = function() {
             drop.removeEventListener('click', clickHandler);
         });
     }
+
+    // Function to change weapon if the player finds one in its path
 
     function WeaponChange(el) {
         let posXFirstPosition = parseInt(firstPosition.getAttribute("data-x"));
@@ -230,6 +248,8 @@ const player2Movement = function() {
         }
     }
 }
+
+// Function when fight has started for player1
 
 const fightPlayer1 = function() {
     let fightBlock = document.getElementById('AttackorDefend');
@@ -249,24 +269,25 @@ const fightPlayer1 = function() {
 
         }
     } else {
+        // Function if player click on 'attack'
         const LifeReduce = () => {
-            if (player2.fight == "attack") {
-                player2life.textContent -= player1.weapon.damage;
-                if (player2life.textContent < 0) {
-                    player2life.textContent = 0
+                if (player2.fight == "attack") {
+                    player2life.textContent -= player1.weapon.damage;
+                    if (player2life.textContent < 0) {
+                        player2life.textContent = 0
+                    }
+                } else {
+                    player2life.textContent -= (player1.weapon.damage / 2);
+                    if (player2life.textContent < 0) {
+                        player2life.textContent = 0
+                    }
                 }
-            } else {
-                player2life.textContent -= (player1.weapon.damage / 2);
-                if (player2life.textContent < 0) {
-                    player2life.textContent = 0
-                }
+                attackButton.removeEventListener("click", LifeReduce);
+                defendButton.removeEventListener("click", DamageReduce);
+                player2.fight = "attack";
+                fightPlayer2();
             }
-            attackButton.removeEventListener("click", LifeReduce);
-            defendButton.removeEventListener("click", DamageReduce);
-            player2.fight = "attack";
-            fightPlayer2();
-        }
-
+            // Function if player click on 'defend'
         const DamageReduce = () => {
             player1.fight = "defend"
             attackButton.removeEventListener("click", LifeReduce)
@@ -278,6 +299,8 @@ const fightPlayer1 = function() {
         defendButton.addEventListener("click", DamageReduce);
     }
 }
+
+// Function when fight has started for player2
 
 const fightPlayer2 = function() {
     let fightBlock = document.getElementById('AttackorDefend');
@@ -297,24 +320,25 @@ const fightPlayer2 = function() {
 
         }
     } else {
+        // Function if player click on 'attack'
         const LifeReduce = () => {
-            if (player1.fight == "attack") {
-                player1life.textContent -= player2.weapon.damage;
-                if (player1life.textContent < 0) {
-                    player1life.textContent = 0
+                if (player1.fight == "attack") {
+                    player1life.textContent -= player2.weapon.damage;
+                    if (player1life.textContent < 0) {
+                        player1life.textContent = 0
+                    }
+                } else {
+                    player1life.textContent -= (player2.weapon.damage / 2)
+                    if (player1life.textContent < 0) {
+                        player1life.textContent = 0
+                    }
                 }
-            } else {
-                player1life.textContent -= (player2.weapon.damage / 2)
-                if (player1life.textContent < 0) {
-                    player1life.textContent = 0
-                }
+                attackButton.removeEventListener("click", LifeReduce);
+                defendButton.removeEventListener("click", DamageReduce);
+                player1.fight = "attack";
+                fightPlayer1();
             }
-            attackButton.removeEventListener("click", LifeReduce);
-            defendButton.removeEventListener("click", DamageReduce);
-            player1.fight = "attack";
-            fightPlayer1();
-        }
-
+            // Function if player click on 'defend'
         const DamageReduce = () => {
             player2.fight = "defend"
             attackButton.removeEventListener("click", LifeReduce)

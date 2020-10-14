@@ -1,7 +1,11 @@
+// Some variables for fullscreen mode 
+
 let fullScreenOn = document.getElementById("fullscreenOn")
 let fullScreenOff = document.getElementById("fullscreenOff")
 fullScreenOff.style.display = "none";
 let elem = document.documentElement;
+
+// Eventlistener to enable fullscreen mode
 
 fullScreenOn.addEventListener("click", function openFullscreen() {
     if (elem.requestFullscreen) {
@@ -17,6 +21,8 @@ fullScreenOn.addEventListener("click", function openFullscreen() {
     fullScreenOff.style.display = "";
 });
 
+// Eventlistener to disable fullscreen mode
+
 fullScreenOff.addEventListener("click", function closeFullscreen() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
@@ -31,11 +37,17 @@ fullScreenOff.addEventListener("click", function closeFullscreen() {
     fullScreenOn.style.display = "none";
 });
 
+////////////////////////////////////////////////////////////////
+
+// Some variables for audio mode
+
 let audioOn = document.getElementById("audioOn")
 let audioOff = document.getElementById("audioOff")
 audioOff.style.display = "none";
 let soundtrack = document.getElementById("soundtrack");
 soundtrack.play();
+
+// Eventlistener to enable audio mode
 
 audioOff.addEventListener("click", function playAudio() {
 
@@ -44,6 +56,9 @@ audioOff.addEventListener("click", function playAudio() {
     audioOn.style.display = "";
     audioOff.style.display = "none";
 });
+
+// Eventlistener to disable audio mode
+
 audioOn.addEventListener("click", function stopAudio() {
 
     soundtrack.pause();
