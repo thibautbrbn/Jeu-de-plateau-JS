@@ -129,7 +129,7 @@ const player2Movement = () => {
 
     let firstPosition = document.querySelector(`.square[data-y='${player2.posY}'][data-x='${player2.posX}']`); // Variable to get where the player is before moving
 
-    // Function and evenlistener to move the player from its firstposition to its target position
+    // Function and evenlistener to move the player from its firstposition to its new position using Jquery
 
     $(".HorosMovement").on("click", function move() {
         firstPosition.classList.remove(player2.name);

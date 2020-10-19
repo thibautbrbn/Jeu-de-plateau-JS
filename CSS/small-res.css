@@ -22,16 +22,25 @@ h1 {
     padding-left: 5px;
 }
 
+#fight h2,
+#fight p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #playersblock {
-    flex-direction: column;
-    align-self: center;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.player_pic-div {
+    display: none;
 }
 
 #player_1,
 #player_2 {
-    min-width: 350px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    min-width: 150px;
+    padding: 3px;
 }
 
 #board {
