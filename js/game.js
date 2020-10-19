@@ -18,47 +18,36 @@ const player1Movement = () => {
     p1Move.moveLeft();
     p1Move.moveRight();
 
-    let targets = document.querySelectorAll('.MinosMovement'); // Variable to get cells where player can move
     let firstPosition = document.querySelector(`.square[data-y='${player1.posY}'][data-x='${player1.posX}']`); // Variable to get where the player is before moving
 
-    // Function and evenlistener to move the player from its firstposition to its target position
+    // Function and evenlistener to move the player from its firstposition to its new position using Jquery
 
-    const targetMove = (el) => {
+    $(".MinosMovement").on("click", function move() {
         firstPosition.classList.remove(player1.name);
         firstPosition.setAttribute("available", "true");
         firstPosition.removeAttribute("Player");
-        el.setAttribute("available", "false");
-        el.setAttribute('player', player1.name);
-        el.classList.add(player1.css_class);
-        player1.posY = parseInt(el.getAttribute("data-y"));
-        player1.posX = parseInt(el.getAttribute("data-x"));
-        WeaponChange(el);
-        if (el.getAttribute("adjacent") == "trueHoros") { // If target cell is an adjacent cell of player2, fight begin
+        this.setAttribute("available", "false");
+        this.setAttribute('player', player1.name);
+        this.classList.add(player1.css_class);
+        player1.posY = parseInt(this.getAttribute("data-y"));
+        player1.posX = parseInt(this.getAttribute("data-x"));
+        WeaponChange(this);
+        if (this.getAttribute("adjacent") == "trueHoros") { // If target cell is an adjacent cell of player2, fight begin
             dropEvent();
-            alert("Le combat commence, bonne chance !")
+            alert("Le combat commence, bonne chance !");
             fightPlayer1(); // Function to start fight
-        } else {
+        } else { // If target cell is not an adjacent cell of player2, player2 plays
             dropEvent();
             player1.SetAdjacent();
             player2Movement();
         }
-    }
-
-    const clickHandler = (e) => {
-        targetMove(e.target);
-    };
-
-    targets.forEach((target) => {
-        target.addEventListener('click', clickHandler);
     });
 
-    // Function to stop eventlistener after click
-
     const dropEvent = () => {
-        targets.forEach((drop) => {
-            drop.removeAttribute('adjacent');
-            drop.classList.remove('MinosMovement');
-            drop.removeEventListener('click', clickHandler);
+        $(".MinosMovement").each(function() {
+            this.removeAttribute('adjacent');
+            this.classList.remove('MinosMovement');
+            $(".MinosMovement").off('click');
         });
     }
 
@@ -129,7 +118,7 @@ const player1Movement = () => {
     }
 }
 
-/* ------- Function when it is player1's turn to play ------- */
+/* ------- Function when it is player2's turn to play ------- */
 // Function to set cells where the player can move on the game table
 const player2Movement = () => {
     const p2Move = new move(player2);
@@ -138,47 +127,36 @@ const player2Movement = () => {
     p2Move.moveLeft();
     p2Move.moveRight();
 
-    let targets = document.querySelectorAll('.HorosMovement'); // Variable to get cells where player can move
     let firstPosition = document.querySelector(`.square[data-y='${player2.posY}'][data-x='${player2.posX}']`); // Variable to get where the player is before moving
 
     // Function and evenlistener to move the player from its firstposition to its target position
 
-    const targetMove = (el) => {
+    $(".HorosMovement").on("click", function move() {
         firstPosition.classList.remove(player2.name);
         firstPosition.setAttribute("available", "true");
         firstPosition.removeAttribute("Player");
-        el.setAttribute("available", "false");
-        el.setAttribute('player', player2.name);
-        el.classList.add(player2.css_class);
-        player2.posY = parseInt(el.getAttribute("data-y"));
-        player2.posX = parseInt(el.getAttribute("data-x"));
-        WeaponChange(el);
-        if (el.getAttribute("adjacent") == "trueMinos") { // If target cell is an adjacent cell of player1, fight begin
+        this.setAttribute("available", "false");
+        this.setAttribute('player', player2.name);
+        this.classList.add(player2.css_class);
+        player2.posY = parseInt(this.getAttribute("data-y"));
+        player2.posX = parseInt(this.getAttribute("data-x"));
+        WeaponChange(this);
+        if (this.getAttribute("adjacent") == "trueMinos") { // If target cell is an adjacent cell of player2, fight begin
             dropEvent();
             alert("Le combat commence, bonne chance !")
             fightPlayer2(); // Function to start fight
-        } else {
+        } else { // If target cell is not an adjacent cell of player1, player1 plays
             dropEvent();
             player2.SetAdjacent();
             player1Movement();
         }
-    }
-
-    const clickHandler = (e) => {
-        targetMove(e.target);
-    };
-
-    targets.forEach((target) => {
-        target.addEventListener('click', clickHandler);
     });
 
-    // Function to stop eventlistener after click
-
     const dropEvent = () => {
-        targets.forEach((drop) => {
-            drop.removeAttribute('adjacent');
-            drop.classList.remove('HorosMovement');
-            drop.removeEventListener('click', clickHandler);
+        $(".HorosMovement").each(function() {
+            this.removeAttribute('adjacent');
+            this.classList.remove('HorosMovement');
+            $(".HorosMovement").off('click');
         });
     }
 
