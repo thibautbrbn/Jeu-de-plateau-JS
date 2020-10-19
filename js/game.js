@@ -1,6 +1,6 @@
 // Function to know which player starts the game randomly
 
-const whoStart = function() {
+const whoStart = () => {
     randomPlayer = Math.floor(Math.random() * 2) + 1;
     if (randomPlayer == "1") {
         player1Movement();
@@ -11,7 +11,7 @@ const whoStart = function() {
 
 /* ------- Function when it is player1's turn to play ------- */
 // Function to set cells where the player can move on the game table
-const player1Movement = function() {
+const player1Movement = () => {
     const p1Move = new move(player1);
     p1Move.moveUp();
     p1Move.moveDown();
@@ -54,7 +54,7 @@ const player1Movement = function() {
 
     // Function to stop eventlistener after click
 
-    function dropEvent() {
+    const dropEvent = () => {
         targets.forEach((drop) => {
             drop.removeAttribute('adjacent');
             drop.classList.remove('MinosMovement');
@@ -64,7 +64,7 @@ const player1Movement = function() {
 
     // Function to change weapon if the player finds one in its path
 
-    function WeaponChange(el) {
+    const WeaponChange = (el) => {
         let posXFirstPosition = parseInt(firstPosition.getAttribute("data-x"));
         let posYFirstPosition = parseInt(firstPosition.getAttribute("data-y"));
         let posXTarget = parseInt(el.getAttribute("data-x"));
@@ -131,7 +131,7 @@ const player1Movement = function() {
 
 /* ------- Function when it is player1's turn to play ------- */
 // Function to set cells where the player can move on the game table
-const player2Movement = function() {
+const player2Movement = () => {
     const p2Move = new move(player2);
     p2Move.moveUp();
     p2Move.moveDown();
@@ -174,7 +174,7 @@ const player2Movement = function() {
 
     // Function to stop eventlistener after click
 
-    function dropEvent() {
+    const dropEvent = () => {
         targets.forEach((drop) => {
             drop.removeAttribute('adjacent');
             drop.classList.remove('HorosMovement');
@@ -184,7 +184,7 @@ const player2Movement = function() {
 
     // Function to change weapon if the player finds one in its path
 
-    function WeaponChange(el) {
+    const WeaponChange = (el) => {
         let posXFirstPosition = parseInt(firstPosition.getAttribute("data-x"));
         let posYFirstPosition = parseInt(firstPosition.getAttribute("data-y"));
         let posXTarget = parseInt(el.getAttribute("data-x"));
@@ -251,7 +251,7 @@ const player2Movement = function() {
 
 // Function when fight has started for player1
 
-const fightPlayer1 = function() {
+const fightPlayer1 = () => {
     let fightBlock = document.getElementById('AttackorDefend');
     let attackButton = document.getElementById('attack');
     let defendButton = document.getElementById('defend');
@@ -302,7 +302,7 @@ const fightPlayer1 = function() {
 
 // Function when fight has started for player2
 
-const fightPlayer2 = function() {
+const fightPlayer2 = () => {
     let fightBlock = document.getElementById('AttackorDefend');
     let attackButton = document.getElementById('attack');
     let defendButton = document.getElementById('defend');

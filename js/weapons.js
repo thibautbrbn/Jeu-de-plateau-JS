@@ -35,7 +35,7 @@ let Weapons = {
 
 // Function to set an random number of weapons on the game table
 
-GenerateWeapons = function() {
+const GenerateWeapons = () => {
     let numberOfWeapon = Math.floor(Math.random() * 4 + 1);
     for (let i = 0; i < numberOfWeapon; i++) {
         let dataY = Math.round(Math.random() * (newBoard.boardSize - 1) + 1);

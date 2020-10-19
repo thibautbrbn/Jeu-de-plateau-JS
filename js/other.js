@@ -7,7 +7,7 @@ let elem = document.documentElement;
 
 // Eventlistener to enable fullscreen mode
 
-fullScreenOn.addEventListener("click", function openFullscreen() {
+fullScreenOn.addEventListener("click", openFullscreen = () => {
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
     } else if (elem.mozRequestFullScreen) { /* Firefox */
@@ -23,7 +23,7 @@ fullScreenOn.addEventListener("click", function openFullscreen() {
 
 // Eventlistener to disable fullscreen mode
 
-fullScreenOff.addEventListener("click", function closeFullscreen() {
+fullScreenOff.addEventListener("click", closeFullscreen = () => {
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.mozCancelFullScreen) { /* Firefox */
@@ -49,7 +49,7 @@ soundtrack.play();
 
 // Eventlistener to enable audio mode
 
-audioOff.addEventListener("click", function playAudio() {
+audioOff.addEventListener("click", playAudio = () => {
 
     soundtrack.play();
     soundtrack.loop = true
@@ -59,7 +59,7 @@ audioOff.addEventListener("click", function playAudio() {
 
 // Eventlistener to disable audio mode
 
-audioOn.addEventListener("click", function stopAudio() {
+audioOn.addEventListener("click", stopAudio = () => {
 
     soundtrack.pause();
     audioOn.style.display = "none";

@@ -4,7 +4,7 @@ const player2 = new player("player2", "Horos", 100, Weapons.weapon0, 0, 0, "Horo
 
 // Function to be loaded on click ('Nouvelle partie')
 
-NewGame = function() {
+const NewGame = () => {
     document.getElementById('board').innerHTML = ""; // Clean the game table
     newBoard.createBoard(); // Create the table
     newBoard.setBlockedCells(); // Set the unavailable cells
